@@ -1,0 +1,20 @@
+[
+  {
+    "role": "cobalt_striker",
+    "vertices": 15840,
+    "triangles": 30162,
+    "bones": 16
+  },
+  {
+    "role": "amber_keeper",
+    "vertices": 14112,
+    "triangles": 27714,
+    "bones": 16
+  },
+  {
+    "role": "graphite_defender",
+    "vertices": 14682,
+    "triangles": 27954,
+    "bones": 16
+  }
+]

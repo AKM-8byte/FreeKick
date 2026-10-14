@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/quality_profile.gd" id="1"]
+[resource]
+script = ExtResource("1")
+profile_name = "Low"
+level = 0
+render_scale = 0.65
+shadows = false
+msaa = 0
+skeleton_rate = 30.0
+net_visual_density = 0.45
+grass_details = false
+stadium_details = false

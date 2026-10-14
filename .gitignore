@@ -1,0 +1,35 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.tools/
+test-output/
+build/
+
+# Local editor/export credentials and private machine state
+export_credentials.cfg
+.godot/export_credentials.cfg
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.bak
+*.blend[0-9]
+.DS_Store
+Thumbs.db
+
+# Local assistant/editor integrations (not game source)
+.agents/
+.codex/
+.claude/
+.cursor/
+.github/copilot-instructions.md
+AGENTS.md
+CLAUDE.md
+SKILL.md
+skills/
+.mcp.json
+.cursorrules
+
+# Optional browser test dependencies
+node_modules/

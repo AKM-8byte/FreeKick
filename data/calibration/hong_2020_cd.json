@@ -1,0 +1,12 @@
+{
+  "title": "Hong et al. 2020 non-spinning mean Cd",
+  "source": "https://www.mdpi.com/2076-3417/10/13/4543/xml",
+  "data_type": "published_CFD_mean_approximate",
+  "independent_raw_experiment": false,
+  "uncertainty_note": "Three rounded published CFD means. Not a universal measured ball curve. Full-text access was restricted during research.",
+  "points": [
+    {"reynolds": 125000, "cd": 0.39, "sigma": 0.03},
+    {"reynolds": 280000, "cd": 0.19, "sigma": 0.03},
+    {"reynolds": 400000, "cd": 0.14, "sigma": 0.03}
+  ]
+}

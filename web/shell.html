@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>$GODOT_PROJECT_NAME</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#071b18;color:#fff;font-family:Arial,sans-serif}
+#canvas{display:block;width:100%;height:100%;outline:none}
+#status{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#071b18;z-index:10}
+.opening{width:min(420px,85vw);text-align:center;animation:appear .7s ease-out both}
+.brand{font-size:16px;letter-spacing:4px;color:#7aceab;margin-bottom:20px}
+h1{font-size:clamp(22px,4vw,30px);font-weight:600;margin:0 0 24px}
+.accent{width:80px;height:2px;background:#7aceab;margin:0 auto 24px;animation:breathe 1.8s ease-in-out infinite}
+#status-progress{display:block;width:100%;height:8px;accent-color:#7aceab;margin-top:16px}
+#status-detail{font-size:13px;color:#adc8bc;min-height:20px}
+#status-notice{color:#ffc1b8;font-size:14px;white-space:pre-wrap;line-height:1.5}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes breathe{50%{opacity:.35;transform:scaleX(.65)}}
+@media(prefers-reduced-motion:reduce){.opening,.accent{animation:none}}
+</style>
+$GODOT_HEAD_INCLUDE
+</head>
+<body>
+<canvas id="canvas" tabindex="0">Your browser does not support the canvas tag.</canvas>
+<div id="status" role="status" aria-live="polite">
+ <div class="opening">
+  <div class="brand">FREEKICK</div>
+  <h1>Created by Ahmet Kayra</h1>
+  <div class="accent"></div>
+  <div id="status-detail">Loading game…</div>
+  <progress id="status-progress"></progress>
+  <div id="status-notice"></div>
+ </div>
+</div>
+<noscript>JavaScript is required to play FreeKick.</noscript>
+<script src="$GODOT_URL"></script>
+<script>
+const GODOT_CONFIG = $GODOT_CONFIG;
+const GODOT_THREADS_ENABLED = $GODOT_THREADS_ENABLED;
+const engine = new Engine(GODOT_CONFIG);
+const overlay = document.getElementById('status');
+const progress = document.getElementById('status-progress');
+const detail = document.getElementById('status-detail');
+function failure(error) {
+ console.error(error);
+ document.getElementById('status-notice').textContent = error instanceof Error ? error.message : String(error);
+ detail.textContent = 'Unable to start the game.';
+ progress.hidden = true;
+}
+const missing = Engine.getMissingFeatures({threads:GODOT_THREADS_ENABLED});
+if(missing.length) {
+ failure('Required browser features are missing: ' + missing.join(', '));
+} else {
+ engine.startGame({onProgress(current,total) {
+  if(current > 0 && total > 0) {
+   progress.max = total;
+   progress.value = current;
+   detail.textContent = 'Loading game… ' + Math.round(current / total * 100) + '%';
+  } else {
+   progress.removeAttribute('value');
+   detail.textContent = 'Starting game…';
+  }
+ }}).then(() => overlay.remove(), failure);
+}
+</script>
+</body>
+</html>

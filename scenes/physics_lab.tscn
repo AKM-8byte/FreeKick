@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfchnjjapggmx"]
+
+[ext_resource type="Script" uid="uid://81c5dpjgsvnm" path="res://scripts/lab/laboratory.gd" id="1"]
+
+[node name="BallPhysicsLaboratory" type="Node3D" unique_id=1823185640]
+script = ExtResource("1")

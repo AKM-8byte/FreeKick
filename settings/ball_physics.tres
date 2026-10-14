@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://da1w1ftcq1uvf"]
+
+[ext_resource type="Script" uid="uid://bq12xln0kki7j" path="res://scripts/ball_physics_profile.gd" id="1_whhwn"]
+
+[resource]
+script = ExtResource("1_whhwn")
+strength = 0.9499999955296516
+curl = 0.739999983459711
+bounce = 0.3099999967962503
+knuckle = 1.999999955296516

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.025, 0.07, 0.055, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.95, 0.65, 1)
+content_margin_left = 18.0
+content_margin_right = 18.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+
+[node name="DifficultyOffer" type="PanelContainer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.0
+offset_top = 120.0
+offset_right = 235.0
+offset_bottom = 296.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Column" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Column"]
+layout_mode = 2
+text = "3 GOL! · YENİ BİR MEYDAN OKUMA?"
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+
+[node name="Detail" type="Label" parent="Column"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Kaleci seviyesini yükseltmek ister misin?"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Column"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Accept" type="Button" parent="Column/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "SEVİYEYİ YÜKSELT"
+
+[node name="Decline" type="Button" parent="Column/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "BU SEVİYEDE KAL"

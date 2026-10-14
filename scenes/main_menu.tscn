@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=1975602578]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_l6cm7")
+scene_bindings = {
+"column": NodePath("CenterContainer3/Column"),
+"exit_button": NodePath("CenterContainer3/Column/ExitButton"),
+"fullscreen_button": NodePath("CenterContainer3/Column/FullscreenButton"),
+"language_select": NodePath("CenterContainer3/Column/LanguageSelect"),
+"play_button": NodePath("CenterContainer3/Column/PlayButton")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1488138848]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07058824, 0.16862746, 0.15686275, 1)
+
+[node name="CenterContainer3" type="CenterContainer" parent="." unique_id=2013959391]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Column" type="VBoxContainer" parent="CenterContainer3" unique_id=1755202740]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label5" type="Label" parent="CenterContainer3/Column" unique_id=1896575921]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SERBEST VURUŞ"
+horizontal_alignment = 1
+metadata/source_text = "SERBEST VURUŞ"
+
+[node name="PlayButton" type="Button" parent="CenterContainer3/Column" unique_id=114004389]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+text = "OYNA"
+metadata/source_text = "OYNA"
+
+[node name="Label7" type="Label" parent="CenterContainer3/Column" unique_id=609150174]
+layout_mode = 2
+text = "DİL"
+metadata/source_text = "DİL"
+
+[node name="LanguageSelect" type="OptionButton" parent="CenterContainer3/Column" unique_id=1787545150]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "Bilgisayar dili"
+popup/item_0/id = 0
+popup/item_1/text = "Türkçe"
+popup/item_1/id = 1
+popup/item_2/text = "English"
+popup/item_2/id = 2
+
+[node name="FullscreenButton" type="Button" parent="CenterContainer3/Column" unique_id=702914298]
+visible = false
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+text = "TAM EKRAN"
+metadata/source_text = "TAM EKRAN"
+
+[node name="ExitButton" type="Button" parent="CenterContainer3/Column" unique_id=1161766439]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+text = "ÇIKIŞ"
+metadata/source_text = "ÇIKIŞ"

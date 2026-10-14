@@ -1,0 +1,882 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game_hud.gd" id="1_fnxle"]
+[ext_resource type="Script" path="res://contact_picker.gd" id="2_el006"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/timing_bar.tscn" id="timing"]
+[ext_resource type="PackedScene" path="res://scenes/ui/difficulty_offer.tscn" id="offer"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n052"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.035, 0.06, 0.025, 0.85)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acb04"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.035, 0.06, 0.025, 0.85)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20ki6"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.035, 0.06, 0.025, 0.65)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5j44"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.035, 0.06, 0.025, 0.85)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_x6mpk"]
+default_font_size = 15
+Button/colors/font_color = Color(0.9490196, 0.9647059, 0.90588236, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_8n052")
+Button/styles/hover = SubResource("StyleBoxFlat_acb04")
+Button/styles/normal = SubResource("StyleBoxFlat_20ki6")
+Button/styles/pressed = SubResource("StyleBoxFlat_n5j44")
+Label/colors/font_color = Color(0.9490196, 0.9647059, 0.90588236, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.8)
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 2
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_8n052")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_acb04")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_20ki6")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_n5j44")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehshv"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.03, 0.07, 0.025, 0.62)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qk33"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.03, 0.07, 0.025, 0.66)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tldsg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.20392157, 0.29411766, 0.15294118, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sd8kv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.8509804, 0.98039216, 0.4392157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ryph"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.025, 0.045, 0.025, 0.96)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6s3p"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.025, 0.045, 0.035, 0.97)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ns2j"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.025, 0.045, 0.035, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8509804, 0.98039216, 0.4392157, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HUD" type="CanvasLayer" unique_id=2018432030]
+script = ExtResource("1_fnxle")
+scene_bindings = {
+"advanced_button": NodePath("Root/AdvancedButton"),
+"advanced_panel": NodePath("Root/AdvancedPanel"),
+"camera_select": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls4"),
+"cinema_fade": NodePath("CinemaRoot/CinemaFade"),
+"cinema_label": NodePath("CinemaRoot/CinemaLabel"),
+"cinema_root": NodePath("CinemaRoot"),
+"cinema_stats": NodePath("CinemaRoot/CinemaStats"),
+"close_button": NodePath("CinemaRoot/CloseButton"),
+"contact_label": NodePath("Root/ContactLabel"),
+"defaults_button": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/DefaultsButton"),
+"detail_label": NodePath("Root/VBoxContainer467/DetailLabel"),
+"difficulty_select": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls3"),
+"distance_label": NodePath("Root/PanelContainer473/VBoxContainer474/DistanceLabel"),
+"distance_slider": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls0"),
+"fire_button": NodePath("Root/PanelContainer478/VBoxContainer479/FireButton"),
+"goal_card": NodePath("Root/GoalCard"),
+"guide_button": NodePath("Root/GuideButton"),
+"help_label": NodePath("Root/HelpLabel"),
+"lateral_slider": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls1"),
+"menu_button": NodePath("Root/MenuButton"),
+"next_button": NodePath("Root/GoalCard/VBoxContainer551/NextButton"),
+"physics_sliders": {
+"bounce": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Bounce"),
+"curl": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Curl"),
+"drag": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Drag"),
+"friction": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Friction"),
+"gravity": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Gravity"),
+"knuckle": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Knuckle"),
+"mass": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Mass"),
+"strength": NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Strength")
+},
+"picker": NodePath("Root/Picker"),
+"power_bar": NodePath("Root/PanelContainer478/VBoxContainer479/PowerBar"),
+"power_label": NodePath("Root/PanelContainer478/VBoxContainer479/PowerLabel"),
+"recommendation_label": NodePath("Root/PanelContainer478/VBoxContainer479/RecommendationLabel"),
+"replay_button": NodePath("Root/GoalCard/VBoxContainer551/ReplayButton"),
+"reset_button": NodePath("Root/ResetButton"),
+"result_label": NodePath("Root/VBoxContainer467/ResultLabel"),
+"root": NodePath("Root"),
+"setting_controls": [NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls0"), NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls1"), NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls2"), NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls3"), NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls4"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Mass"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Strength"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Gravity"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Drag"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Curl"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Bounce"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Friction"), NodePath("Root/AdvancedPanel/ScrollContainer529/VBoxContainer530/Knuckle")],
+"speed_label": NodePath("Root/PanelContainer473/VBoxContainer474/SpeedLabel"),
+"stats_label": NodePath("Root/StatsLabel"),
+"trace_toggle": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/TraceToggle"),
+"training_button": NodePath("Root/TrainingButton"),
+"training_panel": NodePath("Root/TrainingPanel"),
+"wall_distance_label": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/WallDistanceLabel"),
+"wall_slider": NodePath("Root/TrainingPanel/ScrollContainer488/VBoxContainer489/SettingControls2")
+}
+
+[node name="Root" type="Control" parent="." unique_id=1198140735]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource("Theme_x6mpk")
+
+[node name="Label464" type="Label" parent="Root" unique_id=566057226]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 0.85)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 26.0
+offset_right = 178.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 19
+text = "SERBEST VURUŞ"
+
+[node name="StatsLabel" type="Label" parent="Root" unique_id=491346558]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 25.0
+offset_right = -34.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 16
+text = "0 GOL  /  0 ŞUT"
+horizontal_alignment = 2
+
+[node name="TrainingButton" type="Button" parent="Root" unique_id=1951439783]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_top = 67.0
+offset_right = -34.0
+offset_bottom = 103.0
+focus_mode = 0
+text = "ANTRENMAN  [Tab]"
+
+[node name="VBoxContainer467" type="VBoxContainer" parent="Root" unique_id=1768333251]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 26.0
+offset_right = 350.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="ResultLabel" type="Label" parent="Root/VBoxContainer467" unique_id=2057779794]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "YÖNÜNÜ SEÇ"
+horizontal_alignment = 1
+
+[node name="DetailLabel" type="Label" parent="Root/VBoxContainer467" unique_id=2082083547]
+modulate = Color(0.8980392, 0.9254902, 0.84313726, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Alt temas: yükselt • Üst temas: alçalt • Yan temas: falso"
+horizontal_alignment = 1
+
+[node name="Picker" type="Control" parent="Root" unique_id=899313134]
+anchors_preset = 0
+offset_left = 521.4287
+offset_top = 1048.6167
+offset_right = 619.81256
+offset_bottom = 1147.0005
+mouse_default_cursor_shape = 3
+script = ExtResource("2_el006")
+world_mode = true
+
+[node name="ContactLabel" type="Label" parent="Root" unique_id=267908115]
+modulate = Color(0.8901961, 1, 0.45882353, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -104.0
+offset_right = 280.0
+offset_bottom = -78.0
+theme_override_font_sizes/font_size = 16
+text = "MERKEZ TEMAS"
+horizontal_alignment = 1
+
+[node name="HelpLabel" type="Label" parent="Root" unique_id=716629101]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 0
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = -72.0
+offset_right = -290.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 14
+text = "1 · Kaleye tıkla: nişan al     2 · Topa tıkla: temas / falso seç
+3 · Boşluk veya Vur: basılı tut, gücü seç; bırakınca şut çek"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer473" type="PanelContainer" parent="Root" unique_id=525087190]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -180.0
+offset_right = 247.0
+offset_bottom = -72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehshv")
+
+[node name="VBoxContainer474" type="VBoxContainer" parent="Root/PanelContainer473" unique_id=616633026]
+layout_mode = 2
+
+[node name="Label475" type="Label" parent="Root/PanelContainer473/VBoxContainer474" unique_id=1536764150]
+modulate = Color(0.84705883, 0.91764706, 0.6666667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "KALEYE UZAKLIK"
+
+[node name="DistanceLabel" type="Label" parent="Root/PanelContainer473/VBoxContainer474" unique_id=130182644]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "21 m"
+
+[node name="SpeedLabel" type="Label" parent="Root/PanelContainer473/VBoxContainer474" unique_id=1437622951]
+modulate = Color(0.8901961, 1, 0.45882353, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Çıkış hızı —"
+
+[node name="PanelContainer478" type="PanelContainer" parent="Root" unique_id=183199938]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -206.0
+offset_right = -42.0
+offset_bottom = -54.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qk33")
+
+[node name="VBoxContainer479" type="VBoxContainer" parent="Root/PanelContainer478" unique_id=985358676]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="PowerLabel" type="Label" parent="Root/PanelContainer478/VBoxContainer479" unique_id=1459471719]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "GÜÇ %0"
+
+[node name="PowerBar" type="ProgressBar" parent="Root/PanelContainer478/VBoxContainer479" unique_id=540081394]
+custom_minimum_size = Vector2(204, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_tldsg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sd8kv")
+show_percentage = false
+
+[node name="RecommendationLabel" type="Label" parent="Root/PanelContainer478/VBoxContainer479" unique_id=3437738]
+modulate = Color(0.8901961, 1, 0.45882353, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "ÖNERİ: %48–62"
+
+[node name="FireButton" type="Button" parent="Root/PanelContainer478/VBoxContainer479" unique_id=1446485527]
+layout_mode = 2
+focus_mode = 0
+text = "BASILI TUT → BIRAK / VUR"
+
+[node name="ResetButton" type="Button" parent="Root" unique_id=420783414]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -56.0
+offset_right = 247.0
+offset_bottom = -24.0
+focus_mode = 0
+text = "TEKRAR  [R]"
+
+[node name="TrainingPanel" type="PanelContainer" parent="Root" unique_id=1412118005]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_top = 153.0
+offset_right = -34.0
+offset_bottom = 593.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ryph")
+
+[node name="ScrollContainer488" type="ScrollContainer" parent="Root/TrainingPanel" unique_id=2043827764]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer489" type="VBoxContainer" parent="Root/TrainingPanel/ScrollContainer488" unique_id=848306390]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Label490" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1952300494]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "ANTRENMAN AYARLARI"
+
+[node name="Label491" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1191460096]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Uzaklık: 21 m"
+
+[node name="SettingControls0" type="HSlider" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=612235969]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 17.0
+max_value = 30.0
+value = 21.0
+metadata/caption = NodePath("../Label491")
+metadata/title = "Uzaklık"
+metadata/suffix = " m"
+
+[node name="Label493" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1803171951]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Yatay konum: 0 m"
+
+[node name="SettingControls1" type="HSlider" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1510723597]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = -25.0
+max_value = 25.0
+metadata/caption = NodePath("../Label493")
+metadata/title = "Yatay konum"
+metadata/suffix = " m"
+
+[node name="Label495" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=2107214346]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Baraj: 4 kişi"
+
+[node name="SettingControls2" type="HSlider" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=187004150]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 1.0
+max_value = 5.0
+value = 4.0
+metadata/caption = NodePath("../Label495")
+metadata/title = "Baraj"
+metadata/suffix = " kişi"
+
+[node name="WallDistanceLabel" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=787329949]
+modulate = Color(0.84705883, 0.91764706, 0.6666667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Baraj mesafesi: 12.7 m"
+
+[node name="Label498" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1871242017]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "KALECİ ZORLUĞU"
+
+[node name="SettingControls3" type="OptionButton" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=583046725]
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "Kolay"
+popup/item_0/id = 0
+popup/item_1/text = "Dengeli"
+popup/item_1/id = 1
+popup/item_2/text = "Zor"
+popup/item_2/id = 2
+
+[node name="Label510" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1996997779]
+modulate = Color(0.84705883, 0.91764706, 0.6666667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Kolay: daha geç tepki, kısa uzanış.
+Dengeli: köşeler hâlâ gol olabilir.
+Zor: hızlı tepki ve iyi falso okuma."
+autowrap_mode = 3
+
+[node name="Label511" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1217581519]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "KAMERA"
+
+[node name="SettingControls4" type="OptionButton" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=1125244449]
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 2
+popup/item_0/text = "Top odaklı"
+popup/item_0/id = 0
+popup/item_1/text = "Oyuncu arkası / üstü"
+popup/item_1/id = 1
+
+[node name="TraceToggle" type="CheckButton" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=4624114]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Uçuş izi"
+
+[node name="Label524" type="Label" parent="Root/TrainingPanel/ScrollContainer488/VBoxContainer489" unique_id=866537325]
+modulate = Color(0.84705883, 0.91764706, 0.6666667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Alt temas: yükselt • Üst: alçalt
+Sağ temas: sola falso
+Sol temas: sağa falso
+Merkezin hafif altı: ölü yaprak"
+autowrap_mode = 3
+
+[node name="AdvancedButton" type="Button" parent="Root" unique_id=207309115]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_top = 107.0
+offset_right = -34.0
+offset_bottom = 143.0
+focus_mode = 0
+text = "GELİŞMİŞ ÖZELLİKLER"
+
+[node name="AdvancedPanel" type="PanelContainer" parent="Root" unique_id=2132503680]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = 153.0
+offset_right = -34.0
+offset_bottom = 537.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6s3p")
+
+[node name="ScrollContainer529" type="ScrollContainer" parent="Root/AdvancedPanel" unique_id=1385653313]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer530" type="VBoxContainer" parent="Root/AdvancedPanel/ScrollContainer529" unique_id=1209894186]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 9
+
+[node name="Label531" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1417940090]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "TOP FİZİĞİ"
+
+[node name="Label532" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1582783548]
+modulate = Color(0.84705883, 0.91764706, 0.6666667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Ayarlar yeni denemeye uygulanır.
+Uçuş ve tekrar sırasında kilitlenir."
+autowrap_mode = 3
+
+[node name="Label533" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1396833470]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Kütle: 0.46 kg"
+
+[node name="Mass" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=102373696]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 0.35
+max_value = 0.65
+step = 0.01
+value = 0.4599999940395355
+metadata/caption = NodePath("../Label533")
+metadata/title = "Kütle"
+metadata/suffix = " kg"
+metadata/physics_key = "mass"
+
+[node name="Label535" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1798407747]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Vuruş kuvveti: 0.98 ×"
+
+[node name="Strength" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=719330686]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 0.75
+max_value = 1.3
+step = 0.01
+value = 0.98
+metadata/caption = NodePath("../Label535")
+metadata/title = "Vuruş kuvveti"
+metadata/suffix = " ×"
+metadata/physics_key = "strength"
+
+[node name="Label537" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=715264636]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Yerçekimi: 9.80 m/s²"
+
+[node name="Gravity" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1775786830]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 7.0
+max_value = 13.0
+step = 0.1
+value = 9.8
+metadata/caption = NodePath("../Label537")
+metadata/title = "Yerçekimi"
+metadata/suffix = " m/s²"
+metadata/physics_key = "gravity"
+
+[node name="Label539" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1920694158]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Hava direnci: 1.10 ×"
+
+[node name="Drag" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1546478405]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 0.5
+max_value = 2.0
+step = 0.05
+value = 1.1
+metadata/caption = NodePath("../Label539")
+metadata/title = "Hava direnci"
+metadata/suffix = " ×"
+metadata/physics_key = "drag"
+
+[node name="Label541" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=887263716]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Falso etkisi: 0.80 ×"
+
+[node name="Curl" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=17558804]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.5
+step = 0.05
+value = 0.8
+metadata/caption = NodePath("../Label541")
+metadata/title = "Falso etkisi"
+metadata/suffix = " ×"
+metadata/physics_key = "curl"
+
+[node name="Label543" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1541544082]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Sekme: 0.32"
+
+[node name="Bounce" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1832666040]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 0.1
+max_value = 0.65
+step = 0.01
+value = 0.3200000014901161
+metadata/caption = NodePath("../Label543")
+metadata/title = "Sekme"
+metadata/suffix = ""
+metadata/physics_key = "bounce"
+
+[node name="Label545" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1377441806]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Zemin sürtünmesi: 0.72"
+
+[node name="Friction" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1354864452]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+min_value = 0.35
+max_value = 0.95
+step = 0.01
+value = 0.7199999940395355
+metadata/caption = NodePath("../Label545")
+metadata/title = "Zemin sürtünmesi"
+metadata/suffix = ""
+metadata/physics_key = "friction"
+
+[node name="Label547" type="Label" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1967198788]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Ölü yaprak etkisi: 0.80 ×"
+
+[node name="Knuckle" type="HSlider" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=1677529335]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.5
+step = 0.05
+value = 0.8
+metadata/caption = NodePath("../Label547")
+metadata/title = "Ölü yaprak etkisi"
+metadata/suffix = " ×"
+metadata/physics_key = "knuckle"
+
+[node name="DefaultsButton" type="Button" parent="Root/AdvancedPanel/ScrollContainer529/VBoxContainer530" unique_id=935794276]
+layout_mode = 2
+focus_mode = 0
+text = "FİZİĞİ VARSAYILANA DÖNDÜR"
+
+[node name="GoalCard" type="PanelContainer" parent="Root" unique_id=1722856752]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = 90.0
+offset_right = 170.0
+offset_bottom = 272.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ns2j")
+
+[node name="VBoxContainer551" type="VBoxContainer" parent="Root/GoalCard" unique_id=2007972251]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 9
+
+[node name="Label552" type="Label" parent="Root/GoalCard/VBoxContainer551" unique_id=1486633628]
+modulate = Color(0.8901961, 1, 0.45882353, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "GOL!"
+horizontal_alignment = 1
+
+[node name="Label553" type="Label" parent="Root/GoalCard/VBoxContainer551" unique_id=1798695166]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "7 kamera · Sinematik ağır çekim"
+horizontal_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="Root/GoalCard/VBoxContainer551" unique_id=997848920]
+layout_mode = 2
+focus_mode = 0
+text = "GOLÜ İZLE  ▶"
+
+[node name="NextButton" type="Button" parent="Root/GoalCard/VBoxContainer551" unique_id=1831369855]
+layout_mode = 2
+focus_mode = 0
+text = "SONRAKİ ŞUT  [R]"
+
+[node name="MenuButton" type="Button" parent="Root" unique_id=1918849226]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 67.0
+offset_right = 232.0
+offset_bottom = 103.0
+focus_mode = 0
+text = "ANA MENÜ  [Esc]"
+
+[node name="GuideButton" type="Button" parent="Root" unique_id=761393993]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 67.0
+offset_right = 280.0
+offset_bottom = 103.0
+focus_mode = 0
+text = "?"
+
+[node name="CinemaRoot" type="Control" parent="." unique_id=1461056289]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource("Theme_x6mpk")
+
+[node name="ColorRect557" type="ColorRect" parent="CinemaRoot" unique_id=448834468]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 58.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect558" type="ColorRect" parent="CinemaRoot" unique_id=1748516357]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CinemaLabel" type="Label" parent="CinemaRoot" unique_id=1295078758]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 18.0
+offset_right = 360.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 17
+text = "GOL TEKRARI"
+horizontal_alignment = 1
+
+[node name="CinemaStats" type="Label" parent="CinemaRoot" unique_id=1473167132]
+modulate = Color(0.9490196, 0.9647059, 0.90588236, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -47.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="CinemaRoot" unique_id=2072781296]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -206.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 48.0
+focus_mode = 0
+text = "GERİ DÖN  [Esc]"
+
+[node name="CinemaFade" type="ColorRect" parent="CinemaRoot" unique_id=1043100183]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TimingBar" parent="Root" instance=ExtResource("timing")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = -92.0
+
+[node name="DifficultyOffer" parent="Root" instance=ExtResource("offer")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.0
+offset_top = 120.0
+offset_right = 235.0
+offset_bottom = 296.0

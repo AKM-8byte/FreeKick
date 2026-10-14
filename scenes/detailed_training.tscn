@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cvxwtnk8napgg"]
+
+[ext_resource type="PackedScene" uid="uid://ctqhq8ppnxt2s" path="res://main.tscn" id="1_game"]
+
+[node name="DetailedTraining" unique_id=1407363135 instance=ExtResource("1_game")]
+
+[node name="GoalNet" parent="." index="1" unique_id=1231713660]
+cloth_damping = 0.773
+solver_iterations = 7
+rope_radius = 0.005
+
+[node name="Defenders" parent="." index="5" unique_id=822165700]
+normal_hand_correction = 0.14
+hard_hand_correction = 0.13

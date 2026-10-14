@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ctqhq8ppnxt2s"]
+
+[ext_resource type="Script" uid="uid://djiq1dkk4xy2n" path="res://game.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/world/stadium.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_hud.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/characters/kicker.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/ball.tscn" id="5"]
+[ext_resource type="Script" uid="uid://cnc15bmgd6iit" path="res://defenders.gd" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/characters/keeper.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/characters/wall_player.tscn" id="8"]
+[ext_resource type="Resource" uid="uid://da1w1ftcq1uvf" path="res://settings/ball_physics.tres" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/world/goal_net.tscn" id="10"]
+[ext_resource type="Script" uid="uid://bt8ebhwenxjwx" path="res://scripts/game_audio.gd" id="11"]
+
+[node name="Freekick" type="Node3D" unique_id=1117097534]
+script = ExtResource("1")
+physics_profile = ExtResource("9")
+
+[node name="World" parent="." unique_id=604871711 instance=ExtResource("2")]
+
+[node name="GoalNet" parent="." unique_id=1231713660 instance=ExtResource("10")]
+
+[node name="Audio" type="Node" parent="." unique_id=1966042632]
+script = ExtResource("11")
+
+[node name="Ball" parent="." unique_id=41996222 instance=ExtResource("5")]
+
+[node name="Kicker" parent="." unique_id=1913503439 instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56, 0, 22.92)
+rig_ik_weight = 0.8999999798834322
+
+[node name="Defenders" type="Node3D" parent="." unique_id=822165700]
+script = ExtResource("6")
+wall_character = ExtResource("8")
+keeper_character = ExtResource("7")
+
+[node name="Keeper" parent="Defenders" unique_id=82513392 instance=ExtResource("7")]
+transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.75, 0, 0.65)
+rig_rest_parts = {}
+
+[node name="WallPlayer0" parent="Defenders" unique_id=804997828 instance=ExtResource("8")]
+transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, -2.1, 0, 8.4)
+
+[node name="WallPlayer1" parent="Defenders" unique_id=1692449462 instance=ExtResource("8")]
+transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, -1.6, 0, 8.4)
+
+[node name="WallPlayer2" parent="Defenders" unique_id=993795627 instance=ExtResource("8")]
+transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, -1.1, 0, 8.4)
+
+[node name="WallPlayer3" parent="Defenders" unique_id=2009096451 instance=ExtResource("8")]
+transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, -0.6, 0, 8.4)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1522863670]
+transform = Transform3D(1, 0, 0, 0, 0.9971982, 0.074804686, 0, -0.074804686, 0.9971982, 0.6, 1.7, 29)
+current = true
+fov = 26.0
+
+[node name="HUD" parent="." unique_id=694126192 instance=ExtResource("3")]
