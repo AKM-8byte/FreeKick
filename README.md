@@ -106,4 +106,8 @@ New-Item -ItemType Directory -Path test-output -Force | Out-Null
 godot --path . --script tests/visual_check.gd
 ```
 
+## Lisans ve geliştirici
 
+FreeKick, **Ahmet Kayra Maden** tarafından geliştirilmiştir.
+
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. Projeyi kullanan, değiştiren veya dağıtan kişiler telif hakkı bildirimini ve MIT lisans metnini korumalıdır. MIT lisansı, geliştiricinin adının oyun içinde veya açılış ekranında gösterilmesini zorunlu kılmaz.
